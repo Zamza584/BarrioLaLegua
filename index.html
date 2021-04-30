@@ -24,9 +24,15 @@
 
     <script>
         function sendData() {
-            
-   document.getElementById("name").value = "CAT"
-                
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "https://lalegua.000webhostapp.com/registered.php", true);
+            xhttp.withCredentials = true; 
+            xhttp.onload = function () {
+                console.log(xhttp.responseText);
+            };
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("name=Henry&visitantes=Ford");
         }
     </script>
 </body>
