@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form action="registered.php" method="POST">
+    <form>
         <h1>Reunion Sacramental</h1>
         <p>Llenar este formulario para recibir el enlace de la reunion del dia de hoy.</p>
         <div>
@@ -19,7 +19,21 @@
             <label for="visitantes">¿Cuantos son los que van a ver esta reunion? ej.4</label>
             <input type="text" id="visitantes" name="visitantes" maxlength="2" size="2" pattern="[0-9]?[0-9]">
         </div>
-        <input type="submit" value="ENVIAR">
+        <input type="submit" onclick="sendData()" value="ENVIAR">
     </form>
+
+    <script>
+        function sendData() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("name").value = "CAT"
+                }
+            };
+            xhttp.open("POST", "https://lalegua.000webhostapp.com/registered.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("name=Henry&visitantes=Ford");
+        }
+    </script>
 </body>
 </html>
